@@ -10,12 +10,25 @@
         <strong>지점명</strong>
         <span></span>
     </p>
-    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" 
-    integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" 
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" 
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" 
     crossorigin="anonymous"></script>
     <script>
         $(document).ready(function(){
             // $(".storenm span").html("뭐라고")
+            $.ajax({
+                url : "/portfolio/data/store.json",
+                type : "GET",
+                dataType : "json",
+                success : function(mapinfo){
+                    console.log("지점정보", mapinfo);
+                    $(".storenm span").html(mapinfo[0].storenm)
+
+                },
+                error : function(){
+
+                }
+            })
         })
     </script>
 </body>
